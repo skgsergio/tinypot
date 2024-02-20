@@ -41,5 +41,7 @@ func Run(listenAddr string, geoipClient *geoip.GeoIP, tinybirdClient *tinybird.T
 		Msg("starting ssh server")
 
 	err := server.ListenAndServe()
-	log.Fatal().Err(err).Msg("ssh server listen fail")
+	if err != nil {
+		log.Fatal().Err(err).Msg("ssh server listen fail")
+	}
 }

@@ -10,4 +10,4 @@ Modules:
 - SSH: Capture login attempts and also has a chance of sending to the attacker a
   successful authentication in order to capture command attempts.
 
-- HTTP: TBD (or maybe not).
+- HTTP: Capture requests.

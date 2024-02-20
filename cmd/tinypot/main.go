@@ -5,9 +5,11 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"sync"
 	"time"
 
 	"github.com/skgsergio/tinypot/internal/geoip"
+	"github.com/skgsergio/tinypot/internal/httpserver"
 	"github.com/skgsergio/tinypot/internal/sshserver"
 	"github.com/skgsergio/tinypot/internal/tinybird"
 
@@ -21,13 +23,11 @@ var (
 		StrFromEnv("TP_SSH_LISTEN", ":2222"),
 		"SSH listen address (env var \"TP_SSH_LISTEN\")",
 	)
-	/*
-		httpListenFlag = flag.String(
-			"http-listen",
-			StrFromEnv("TP_HTTP_LISTEN", ":8080"),
-			"HTTP listen address (env var \"TP_HTTP_LISTEN\")",
-		)
-	*/
+	httpListenFlag = flag.String(
+		"http-listen",
+		StrFromEnv("TP_HTTP_LISTEN", ":8080"),
+		"HTTP listen address (env var \"TP_HTTP_LISTEN\")",
+	)
 	tbApiKeyFlag = flag.String(
 		"tb-apikey",
 		StrFromEnv("TP_TB_APIKEY", ""),
@@ -95,5 +95,19 @@ func main() {
 	geo := geoip.New(*geoipCityFlag, *geoipASNFlag)
 	tb := tinybird.New(*tbApiKeyFlag)
 
-	sshserver.Run(*sshListenFlag, geo, tb)
+	wg := sync.WaitGroup{}
+
+	wg.Add(1)
+	go func() {
+		sshserver.Run(*sshListenFlag, geo, tb)
+		wg.Done()
+	}()
+
+	wg.Add(1)
+	go func() {
+		httpserver.Run(*httpListenFlag, geo, tb)
+		wg.Done()
+	}()
+
+	wg.Wait()
 }
