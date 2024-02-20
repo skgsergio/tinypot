@@ -1,0 +1,10 @@
+DESCRIPTION For succeeded authentications which commands were attempted to run.
+
+SCHEMA >
+    `date` DateTime `json:$.date`,
+    `session_id` String `json:$.session_id`,
+    `cmd` String `json:$.cmd`,
+    `interactive` UInt8 `json:$.interactive`
+
+ENGINE "MergeTree"
+ENGINE_SORTING_KEY "cmd, interactive, session_id, date"

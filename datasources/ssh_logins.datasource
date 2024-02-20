@@ -1,0 +1,17 @@
+DESCRIPTION SSH Login attempts. For succeeded auths check ssh_cmds in order to see commands attempts for the session.
+
+SCHEMA >
+    `date` DateTime `json:$.date`,
+    `session_id` String `json:$.session_id`,
+    `client_ip` String `json:$.client_ip`,
+    `password` String `json:$.password`,
+    `user` String `json:$.user`,
+    `client_version` String `json:$.client_version`,
+    `success` UInt8 `json:$.success`,
+    `country_code` String `json:$.country_code`,
+    `city` String `json:$.city`,
+    `as_name` String `json:$.as_name`,
+    `asn` UInt64 `json:$.asn`
+
+ENGINE "MergeTree"
+ENGINE_SORTING_KEY "client_ip, session_id, date, country_code, asn, user, password"
