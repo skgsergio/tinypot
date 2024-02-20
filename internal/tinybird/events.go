@@ -67,7 +67,7 @@ func (tb *TinyBird) postEvents(dataSource string, payload []byte) bool {
 
 	log.Info().
 		Str("body", string(body)).
-		Int("status_code", req.Response.StatusCode).
+		Int("status_code", res.StatusCode).
 		Msg("events posted to tinybird")
 
 	return true
