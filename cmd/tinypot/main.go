@@ -2,7 +2,9 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/skgsergio/tinypot/internal/geoip"
@@ -61,14 +63,12 @@ func StrFromEnv(envVar string, defaultVal string) string {
 }
 
 func BoolFromEnv(envVar string, defaultVal bool) bool {
-	value := os.Getenv(envVar)
-
-	if value == "true" {
-		return true
-	}
-
-	if value == "false" {
-		return false
+	if value := os.Getenv(envVar); value != "" {
+		boolVal, err := strconv.ParseBool(value)
+		if err != nil {
+			panic(fmt.Sprintf("environment variable `%s` has invalid value `%s`", envVar, value))
+		}
+		return boolVal
 	}
 
 	return defaultVal
