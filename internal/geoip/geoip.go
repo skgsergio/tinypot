@@ -53,8 +53,8 @@ func (g *GeoIP) Query(ip net.IP) *GeoIPResult {
 	}
 
 	city := cityRes.City.Names["en"]
-	for _, sub := range cityRes.Subdivisions {
-		city += ", " + sub.Names["en"]
+	for idx := len(cityRes.Subdivisions) - 1; idx >= 0; idx-- {
+		city += ", " + cityRes.Subdivisions[idx].Names["en"]
 	}
 
 	asnRes, err := g.dbASN.ASN(ip)
