@@ -19,6 +19,7 @@ var (
 type HTTPEvent struct {
 	Date        string `json:"date"`
 	ClientIP    string `json:"client_ip"`
+	Host        string `json:"host"`
 	Method      string `json:"method"`
 	URL         string `json:"url"`
 	UserAgent   string `json:"user_agent"`
@@ -46,6 +47,7 @@ func Run(listenAddr string, geoipClient *geoip.GeoIP, tinybirdClient *tinybird.T
 
 		log.Info().
 			Str("clientIp", remoteAddr).
+			Str("host", r.Host).
 			Str("method", r.Method).
 			Str("url", r.URL.Path).
 			Str("userAgent", r.UserAgent()).
@@ -63,6 +65,7 @@ func Run(listenAddr string, geoipClient *geoip.GeoIP, tinybirdClient *tinybird.T
 			HTTPEvent{
 				Date:        time.Now().Format(time.RFC3339),
 				ClientIP:    remoteAddr,
+				Host:        r.Host,
 				Method:      r.Method,
 				URL:         r.URL.Path,
 				UserAgent:   r.UserAgent(),

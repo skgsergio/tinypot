@@ -3,6 +3,7 @@ DESCRIPTION HTTP Requests
 SCHEMA >
     `date` DateTime `json:$.date`,
     `client_ip` String `json:$.client_ip`,
+    `host` String `json:$.host`,
     `method` String `json:$.method`,
     `url` String `json:$.url`,
     `user_agent` String `json:$.user_agent`,
@@ -12,4 +13,4 @@ SCHEMA >
     `asn` UInt64 `json:$.asn`
 
 ENGINE "MergeTree"
-ENGINE_SORTING_KEY "client_ip, method, date, country_code, asn, url"
+ENGINE_SORTING_KEY "client_ip, method, host, date, country_code, asn, url"
