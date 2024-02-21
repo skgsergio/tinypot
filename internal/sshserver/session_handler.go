@@ -44,6 +44,7 @@ func sessionHandler(session ssh.Session) {
 			),
 		)
 
+	TermLoop:
 		for {
 			line, err := t.ReadLine()
 			if err != nil {
@@ -62,8 +63,13 @@ func sessionHandler(session ssh.Session) {
 			if len(pseudoArgv) > 0 {
 				cmds = append(cmds, line)
 
-				if pseudoArgv[0] == "exit" {
-					break
+				switch pseudoArgv[0] {
+				case "exit":
+					break TermLoop
+				case "help":
+					fmt.Fprint(t, "GNU bash, version 5.1.33(7)-release (x86_64-pc-linux-gnu)\n")
+				default:
+					fmt.Fprintf(t, "%s: command not found\n", pseudoArgv[0])
 				}
 			}
 		}
@@ -88,5 +94,5 @@ func sessionHandler(session ssh.Session) {
 		})
 	}
 
-	tb.SendEvents("ssh_cmds", events)
+	go tb.SendEvents("ssh_cmds", events)
 }

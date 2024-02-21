@@ -60,7 +60,7 @@ func Run(listenAddr string, geoipClient *geoip.GeoIP, tinybirdClient *tinybird.T
 		}
 		city += geoRes.CountryName
 
-		tb.SendEvent(
+		go tb.SendEvent(
 			"http_requests",
 			HTTPEvent{
 				Date:        time.Now().Format(time.RFC3339),

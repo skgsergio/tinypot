@@ -52,7 +52,7 @@ func passwordHandler(ctx ssh.Context, password string) bool {
 	}
 	city += geoRes.CountryName
 
-	tb.SendEvent(
+	go tb.SendEvent(
 		"ssh_logins",
 		LoginEvent{
 			Date:          time.Now().Format(time.RFC3339),
