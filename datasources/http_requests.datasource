@@ -1,4 +1,5 @@
-DESCRIPTION HTTP Requests
+DESCRIPTION >
+    HTTP Requests
 
 SCHEMA >
     `date` DateTime `json:$.date`,
@@ -12,5 +13,6 @@ SCHEMA >
     `as_name` String `json:$.as_name`,
     `asn` UInt64 `json:$.asn`
 
-ENGINE "MergeTree"
-ENGINE_SORTING_KEY "client_ip, method, host, date, country_code, asn, url"
+ENGINE MergeTree
+ENGINE_PARTITION_KEY toYear(date)
+ENGINE_SORTING_KEY client_ip, method, host, date, country_code, asn, url

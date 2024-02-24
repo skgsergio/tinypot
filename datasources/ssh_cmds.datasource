@@ -1,4 +1,5 @@
-DESCRIPTION For succeeded authentications which commands were attempted to run.
+DESCRIPTION >
+    For succeeded authentications which commands were attempted to run.
 
 SCHEMA >
     `date` DateTime `json:$.date`,
@@ -6,5 +7,6 @@ SCHEMA >
     `cmd` String `json:$.cmd`,
     `interactive` UInt8 `json:$.interactive`
 
-ENGINE "MergeTree"
-ENGINE_SORTING_KEY "cmd, interactive, session_id, date"
+ENGINE MergeTree
+ENGINE_PARTITION_KEY toYear(date)
+ENGINE_SORTING_KEY cmd, interactive, session_id, date

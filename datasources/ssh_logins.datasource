@@ -1,4 +1,5 @@
-DESCRIPTION SSH Login attempts. For succeeded auths check ssh_cmds in order to see commands attempts for the session.
+DESCRIPTION >
+    SSH Login attempts. For succeeded auths check ssh_cmds in order to see commands attempts for the session.
 
 SCHEMA >
     `date` DateTime `json:$.date`,
@@ -13,5 +14,6 @@ SCHEMA >
     `as_name` String `json:$.as_name`,
     `asn` UInt64 `json:$.asn`
 
-ENGINE "MergeTree"
-ENGINE_SORTING_KEY "client_ip, session_id, date, country_code, asn, user, password"
+ENGINE MergeTree
+ENGINE_PARTITION_KEY toYear(date)
+ENGINE_SORTING_KEY client_ip, session_id, date, country_code, asn, user, password
