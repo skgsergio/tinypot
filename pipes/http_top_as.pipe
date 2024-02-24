@@ -1,18 +1,14 @@
-DESCRIPTION Top AS by number of individual IPs that reached the HTTP honeypot.
+DESCRIPTION >
+    Top AS by number of individual IPs that reached the HTTP honeypot.
 
 TOKEN "pipe_read" READ
 
 NODE ssh_top_as_node
 SQL >
     %
-        SELECT DISTINCT count() as ip_count, asn, as_name
-        FROM
-            (
-                SELECT DISTINCT client_ip, asn, as_name
-                FROM http_requests
-                GROUP BY client_ip, asn, as_name
-            )
-        GROUP BY asn, as_name
-        ORDER BY ip_count DESC
-        LIMIT {{ Int32(page_size, 100) }}
-        OFFSET {{ Int32(page, 0) * Int32(page_size, 100) }}
+    SELECT DISTINCT count() as ip_count, asn, as_name
+    FROM (SELECT DISTINCT client_ip, asn, as_name FROM http_requests GROUP BY client_ip, asn, as_name)
+    GROUP BY asn, as_name
+    ORDER BY ip_count DESC
+    LIMIT {{ Int32(page_size, 100) }}
+    OFFSET {{ Int32(page, 0) * Int32(page_size, 100) }}
