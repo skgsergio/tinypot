@@ -1,19 +1,18 @@
-DESCRIPTION Top AS by number of individual IPs that reached the SSH honeypot. Can by filtered by country code.
+DESCRIPTION Top AS by number of individual IPs that reached the SSH honeypot.
 
 TOKEN "pipe_read" READ
 
 NODE ssh_top_as_node
 SQL >
     %
-        SELECT DISTINCT count() as ip_count, asn, as_name, country_code
+        SELECT DISTINCT count() as ip_count, asn, as_name
         FROM
             (
-                SELECT DISTINCT client_ip, country_code, asn, as_name
+                SELECT DISTINCT client_ip, asn, as_name
                 FROM ssh_logins
-                {% if defined(country_code) %}
-                    WHERE country_code={{ String(country_code) }}
-                {% end %}
-                GROUP BY client_ip, country_code, asn, as_name
+                GROUP BY client_ip, asn, as_name
             )
-        GROUP BY asn, as_name, country_code
+        GROUP BY asn, as_name
         ORDER BY ip_count DESC
+        LIMIT {{ Int32(page_size, 100) }}
+        OFFSET {{ Int32(page, 0) * Int32(page_size, 100) }}
