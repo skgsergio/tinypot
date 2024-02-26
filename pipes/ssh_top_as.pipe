@@ -2,7 +2,6 @@ DESCRIPTION >
     Top AS by number of individual IPs that reached the SSH honeypot.
 
 TOKEN "pipe_read" READ
-TOKEN "ssh_top_as_endpoint_read_4624" READ
 
 NODE ssh_top_as_node
 SQL >
