@@ -3,7 +3,7 @@ DESCRIPTION >
 
 TOKEN "pipe_read" READ
 
-NODE ssh_top_as_node
+NODE http_top_as_node
 SQL >
     %
     SELECT DISTINCT count() as ip_count, asn, as_name
