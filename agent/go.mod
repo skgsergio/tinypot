@@ -1,4 +1,4 @@
-module github.com/skgsergio/tinypot
+module github.com/skgsergio/tinypot/agent
 
 go 1.21.6
 

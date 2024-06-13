@@ -8,10 +8,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/skgsergio/tinypot/internal/geoip"
-	"github.com/skgsergio/tinypot/internal/httpserver"
-	"github.com/skgsergio/tinypot/internal/sshserver"
-	"github.com/skgsergio/tinypot/internal/tinybird"
+	"github.com/skgsergio/tinypot/agent/internal/geoip"
+	"github.com/skgsergio/tinypot/agent/internal/httpserver"
+	"github.com/skgsergio/tinypot/agent/internal/sshserver"
+	"github.com/skgsergio/tinypot/agent/internal/tinybird"
 
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"

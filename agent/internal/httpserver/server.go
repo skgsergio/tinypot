@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/skgsergio/tinypot/internal/geoip"
-	"github.com/skgsergio/tinypot/internal/tinybird"
+	"github.com/skgsergio/tinypot/agent/internal/geoip"
+	"github.com/skgsergio/tinypot/agent/internal/tinybird"
 
 	"github.com/rs/zerolog/log"
 )
