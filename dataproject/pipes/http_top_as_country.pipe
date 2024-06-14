@@ -6,14 +6,9 @@ TOKEN "pipe_read" READ
 NODE http_as_country_top
 SQL >
     %
-    SELECT DISTINCT count() as ip_count, asn, as_name, country_code
-    FROM
-        (
-            SELECT DISTINCT client_ip, country_code, asn, as_name
-            FROM http_requests
-            {% if defined(country_code) %} WHERE country_code ={{ String(country_code) }} {% end %}
-            GROUP BY client_ip, country_code, asn, as_name
-        )
+    SELECT countDistinct(client_ip) as ip_count, asn, as_name, country_code
+    FROM http_requests
+    {% if defined(country_code) %} WHERE country_code ={{ String(country_code) }} {% end %}
     GROUP BY asn, as_name, country_code
     ORDER BY ip_count DESC
     LIMIT {{ Int32(page_size, 100) }}

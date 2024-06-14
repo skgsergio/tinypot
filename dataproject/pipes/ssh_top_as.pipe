@@ -6,8 +6,8 @@ TOKEN "pipe_read" READ
 NODE ssh_top_as_node
 SQL >
     %
-    SELECT DISTINCT count() as ip_count, asn, as_name
-    FROM (SELECT DISTINCT client_ip, asn, as_name FROM ssh_logins GROUP BY client_ip, asn, as_name)
+    SELECT countDistinct(client_ip) as ip_count, asn, as_name
+    FROM ssh_logins
     GROUP BY asn, as_name
     ORDER BY ip_count DESC
     LIMIT {{ Int32(page_size, 100) }}
