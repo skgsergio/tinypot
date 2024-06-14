@@ -13,6 +13,8 @@
           - main
           - master
         types: [opened, reopened, labeled, unlabeled, synchronize, closed]
+        paths:
+          - dataproject/**
 
     concurrency: ${{ github.workflow }}-${{ github.event.pull_request.number }}
 

@@ -12,6 +12,9 @@
         branches:
           - main
           - master
+        paths:
+          - dataproject/**
+
     jobs:
       cd:  # deploy changes to workspace 'tinypot'
         uses: tinybirdco/ci/.github/workflows/cd.yml@v3.1.0
