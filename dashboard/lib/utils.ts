@@ -1,7 +1,7 @@
 import { type ClassValue, clsx } from 'clsx'
 import { format } from 'date-fns/format'
 import { subDays } from 'date-fns/subDays'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { twMerge } from 'tailwind-merge'
 import { DateParams } from './types'
 
@@ -12,7 +12,6 @@ export function cn(...inputs: ClassValue[]) {
 export function useDateParams() {
   const searchParams = useSearchParams()
   const router = useRouter()
-  const pathname = usePathname()
 
   const dateParams: DateParams = {
     date_from:
@@ -31,7 +30,7 @@ export function useDateParams() {
       params.set('date_to', dateRange.date_to + ' 00:00:00')
     }
 
-    router.push(`${pathname}?${params.toString()}`)
+    router.push(`?${params.toString()}`)
   }
 
   return [dateParams, setDateParams] as const
