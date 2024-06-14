@@ -1,5 +1,5 @@
 DESCRIPTION >
-    Top AS by number of individual IPs that reached the HTTP honeypot.
+    Top AS by number of individual IPs that reached the HTTP honeypot. Can be filtered by date and country code.
 
 TOKEN "pipe_read" READ
 
@@ -10,6 +10,7 @@ SQL >
     FROM http_requests
     WHERE
         1 == 1
+        {% if defined(country_code) %} AND country_code = {{ String(country_code) }}{% end %}
         {% if defined(date_from) %} AND date >= {{ DateTime(date_from) }}{% end %}
         {% if defined(date_to) %} AND date <= {{ DateTime(date_to) }}{% end %}
     GROUP BY asn, as_name

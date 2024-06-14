@@ -1,5 +1,5 @@
 DESCRIPTION >
-    Top URLs requested to the HTTP honeypot.
+    Top URLs requested to the HTTP honeypot. Can be filtered by date.
 
 TOKEN "pipe_read" READ
 
