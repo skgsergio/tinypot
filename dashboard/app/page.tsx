@@ -25,10 +25,8 @@ function Home() {
         <HTTPTopAS {...dateParams} />
         <HTTPTopCountry {...dateParams} />
       </Row>
-      <Row>
-        <HTTPTopURL exclude_root={"true"} {...dateParams} />
-      </Row>
-        <HTTPTopUA exclude_empty={"true"} {...dateParams} />
+      <HTTPTopURL exclude_root={"true"} {...dateParams} />
+      <HTTPTopUA exclude_empty={"true"} {...dateParams} />
     </Layout>
   )
 }

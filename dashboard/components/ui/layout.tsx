@@ -21,5 +21,5 @@ export function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
 }
 
 export function Row({ children }: Readonly<{ children?: React.ReactNode }>) {
-  return <div className="flex gap-8 w-full">{children}</div>
+  return <div className="flex flex-col lg:flex-row gap-8 w-full">{children}</div>
 }
