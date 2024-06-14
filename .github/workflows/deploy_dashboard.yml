@@ -34,7 +34,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "pnpm"
 
       - uses: pnpm/action-setup@v4
         name: Install pnpm
@@ -42,19 +41,7 @@ jobs:
           version: 8
           run_install: false
 
-      - name: Get pnpm store directory
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: Setup Pages
+      - name: Setup Next.js for Pages
         uses: actions/configure-pages@v5
         with:
           static_site_generator: next
@@ -63,7 +50,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build with Next.js
+      - name: Build Next.js
         env:
           NEXT_PUBLIC_DASHBOARD_TOKEN: ${{ secrets.NEXT_PUBLIC_DASHBOARD_TOKEN }}
         run: pnpm next build
