@@ -1,18 +1,18 @@
 DESCRIPTION >
-    Top AS by number of individual IPs that reached the HTTP honeypot.
+    Top User-Agents from the requests to the HTTP honeypot.
 
 TOKEN "pipe_read" READ
 
-NODE http_top_as_node
+NODE http_top_useragent_node
 SQL >
     %
-    SELECT countDistinct(client_ip) as ip_count, asn, as_name
+    SELECT count() AS hits, user_agent
     FROM http_requests
     WHERE
         1 == 1
         {% if defined(date_from) %} AND date >= {{ DateTime(date_from) }}{% end %}
         {% if defined(date_to) %} AND date <= {{ DateTime(date_to) }}{% end %}
-    GROUP BY asn, as_name
-    ORDER BY ip_count DESC
+    GROUP BY user_agent
+    ORDER BY hits DESC
     LIMIT {{ Int32(page_size, 10) }}
     OFFSET {{ Int32(page, 0) * Int32(page_size, 10) }}
