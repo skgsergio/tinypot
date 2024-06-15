@@ -10,7 +10,7 @@ SQL >
     FROM http_requests
     WHERE
         1 == 1
-        {% if Boolean(exclude_root, False) %}AND url != '/'{% end %}
+        {% if Boolean(exclude_root, False) %} AND url != '/'{% end %}
         {% if defined(date_from) %} AND date >= {{ DateTime(date_from) }}{% end %}
         {% if defined(date_to) %} AND date <= {{ DateTime(date_to) }}{% end %}
     GROUP BY url
