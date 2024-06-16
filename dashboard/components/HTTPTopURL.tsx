@@ -5,13 +5,12 @@ import { BarList } from '@tinybirdco/charts'
 export function HTTPTopURL(params: {
   date_from?: string
   date_to?: string
-  exclude_root?: string
   page?: number
   page_size?: number
 }) {
   return (
     <BarList
-      endpoint="https://api.tinybird.co/v0/pipes/http_top_urls.json"
+      endpoint="https://api.tinybird.co/v0/pipes/http_top_urls.json?exclude_root=true"
       token={process.env.NEXT_PUBLIC_DASHBOARD_TOKEN}
       index="url"
       categories={['hits']}

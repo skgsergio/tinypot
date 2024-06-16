@@ -5,13 +5,12 @@ import { BarList } from '@tinybirdco/charts'
 export function HTTPTopUA(params: {
   date_from?: string
   date_to?: string
-  exclude_empty?: string
   page?: number
   page_size?: number
 }) {
   return (
     <BarList
-      endpoint="https://api.tinybird.co/v0/pipes/http_top_useragent.json"
+      endpoint="https://api.tinybird.co/v0/pipes/http_top_useragent.json?exclude_empty=true"
       token={process.env.NEXT_PUBLIC_DASHBOARD_TOKEN}
       index="user_agent"
       categories={['hits']}

@@ -11,9 +11,9 @@ export function SSHTopAS(params: {
 }) {
   return (
     <BarList
-      endpoint="https://api.tinybird.co/v0/pipes/ssh_top_as.json"
+      endpoint="https://api.tinybird.co/v0/pipes/ssh_top_as.json?as_name_with_number=true"
       token={process.env.NEXT_PUBLIC_DASHBOARD_TOKEN}
-      index="as_name"
+      index="as"
       categories={['ip_count']}
       colorPalette={['#27F795', '#008060', '#0EB1B9']}
       borderRadius="8px"

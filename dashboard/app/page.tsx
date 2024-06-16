@@ -2,8 +2,10 @@
 
 import { SSHTopAS } from '@/components/SSHTopAS'
 import { SSHTopCountry } from '@/components/SSHTopCountry'
+import { SSHTopIP } from '@/components/SSHTopIP'
 import { HTTPTopAS } from '@/components/HTTPTopAS'
 import { HTTPTopCountry } from '@/components/HTTPTopCountry'
+import { HTTPTopIP } from '@/components/HTTPTopIP'
 import { HTTPTopURL } from '@/components/HTTPTopURL'
 import { HTTPTopUA } from '@/components/HTTPTopUA'
 import { Layout, Row } from '@/components/ui/layout'
@@ -18,15 +20,17 @@ function Home() {
       <h2 className="font-sans text-lg">SSH Honeypot</h2>
       <Row>
         <SSHTopAS {...dateParams} />
+        <SSHTopIP {...dateParams} />
         <SSHTopCountry {...dateParams} />
       </Row>
       <h2 className="font-sans text-lg">HTTP Honeypot</h2>
       <Row>
         <HTTPTopAS {...dateParams} />
+        <HTTPTopIP {...dateParams} />
         <HTTPTopCountry {...dateParams} />
       </Row>
-      <HTTPTopURL exclude_root={"true"} {...dateParams} />
-      <HTTPTopUA exclude_empty={"true"} {...dateParams} />
+      <HTTPTopURL {...dateParams} />
+      <HTTPTopUA {...dateParams} />
     </Layout>
   )
 }
