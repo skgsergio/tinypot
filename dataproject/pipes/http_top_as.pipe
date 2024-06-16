@@ -6,7 +6,12 @@ TOKEN "pipe_read" READ
 NODE http_top_as_node
 SQL >
     %
-    SELECT countDistinct(client_ip) as ip_count, asn, as_name
+    SELECT
+        countDistinct(client_ip) as ip_count,
+        {% if Boolean(as_name_with_number, False) %}
+            concatWithSeparator(' - ', concat('AS', asn), as_name) as `as`
+        {% else %} asn, as_name
+        {% end %}
     FROM http_requests
     WHERE
         1 == 1
