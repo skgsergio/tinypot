@@ -19,7 +19,7 @@ export function SSHTopCountry(params: {
       boxShadow="0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"
       title="SSH Top Countries"
       showLegend={true}
-      height="480px"
+      height="490px"
       padding="16px"
       params={params}
     />
