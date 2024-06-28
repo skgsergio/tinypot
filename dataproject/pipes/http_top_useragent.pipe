@@ -11,8 +11,8 @@ SQL >
     WHERE
         1 == 1
         {% if Boolean(exclude_empty) %} AND user_agent != ''{% end %}
-        {% if defined(date_from) %} AND date >= {{ DateTime(date_from) }}{% end %}
-        {% if defined(date_to) %} AND date <= {{ DateTime(date_to) }}{% end %}
+        {% if defined(date_from) %} AND Date(date) >= {{ Date(date_from) }}{% end %}
+        {% if defined(date_to) %} AND Date(date) <= {{ Date(date_to) }}{% end %}
     GROUP BY user_agent
     ORDER BY hits DESC
     LIMIT {{ Int32(page_size, 10) }}

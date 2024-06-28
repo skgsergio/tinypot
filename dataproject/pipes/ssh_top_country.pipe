@@ -10,8 +10,8 @@ SQL >
     FROM ssh_logins
     WHERE
         1 == 1
-        {% if defined(date_from) %} AND date >= {{ DateTime(date_from) }}{% end %}
-        {% if defined(date_to) %} AND date <= {{ DateTime(date_to) }}{% end %}
+        {% if defined(date_from) %} AND Date(date) >= {{ Date(date_from) }}{% end %}
+        {% if defined(date_to) %} AND Date(date) <= {{ Date(date_to) }}{% end %}
     GROUP BY country_code
     ORDER BY ip_count DESC
     LIMIT {{ Int32(page_size, 10) }}

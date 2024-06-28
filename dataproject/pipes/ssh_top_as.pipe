@@ -10,14 +10,15 @@ SQL >
         countDistinct(client_ip) as ip_count,
         {% if Boolean(as_name_with_number, False) %}
             concatWithSeparator(' - ', concat('AS', asn), as_name) as `as`
-        {% else %} asn, as_name
+        {% else %}
+            asn, as_name
         {% end %}
     FROM ssh_logins
     WHERE
         1 == 1
         {% if defined(country_code) %} AND country_code = {{ String(country_code) }}{% end %}
-        {% if defined(date_from) %} AND date >= {{ DateTime(date_from) }}{% end %}
-        {% if defined(date_to) %} AND date <= {{ DateTime(date_to) }}{% end %}
+        {% if defined(date_from) %} AND Date(date) >= {{ Date(date_from) }}{% end %}
+        {% if defined(date_to) %} AND Date(date) <= {{ Date(date_to) }}{% end %}
     GROUP BY asn, as_name
     ORDER BY ip_count DESC
     LIMIT {{ Int32(page_size, 10) }}
