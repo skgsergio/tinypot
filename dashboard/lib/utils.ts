@@ -16,18 +16,18 @@ export function useDateParams() {
   const dateParams: DateParams = {
     date_from:
       searchParams.get('date_from') ||
-      format(subDays(new Date(), 30), 'yyyy-MM-dd 00:00:00'),
-    date_to: searchParams.get('date_to') || format(new Date(), 'yyyy-MM-dd 00:00:00'),
+      format(subDays(new Date(), 30), 'yyyy-MM-dd'),
+    date_to: searchParams.get('date_to') || format(new Date(), 'yyyy-MM-dd'),
   }
 
   const setDateParams = (dateRange: DateParams) => {
     const params = new URLSearchParams(searchParams.toString())
     if (dateRange.date_from) {
-      params.set('date_from', dateRange.date_from + ' 00:00:00')
+      params.set('date_from', dateRange.date_from)
     }
 
     if (dateRange.date_to) {
-      params.set('date_to', dateRange.date_to + ' 00:00:00')
+      params.set('date_to', dateRange.date_to)
     }
 
     router.push(`?${params.toString()}`)
