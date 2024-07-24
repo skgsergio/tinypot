@@ -56,14 +56,14 @@ var (
 )
 
 func StrFromEnv(envVar string, defaultVal string) string {
-	if value := os.Getenv(envVar); value != "" {
+	if value, ok := os.LookupEnv(envVar); ok {
 		return value
 	}
 	return defaultVal
 }
 
 func BoolFromEnv(envVar string, defaultVal bool) bool {
-	if value := os.Getenv(envVar); value != "" {
+	if value, ok := os.LookupEnv(envVar); ok {
 		boolVal, err := strconv.ParseBool(value)
 		if err != nil {
 			panic(fmt.Sprintf("environment variable `%s` has invalid value `%s`", envVar, value))
