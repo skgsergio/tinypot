@@ -1,5 +1,7 @@
 DESCRIPTION >
-    Top AS including country code by number of individual IPs that reached the SSH honeypot. Can by filtered by date.
+    Top country codes by number of individual IPs that reached the SSH honeypot. Can by filtered by date.
+
+TAGS ssh, country
 
 TOKEN "pipe_read" READ
 

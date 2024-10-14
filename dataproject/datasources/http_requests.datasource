@@ -1,6 +1,8 @@
 DESCRIPTION >
     HTTP Requests
 
+TAGS http, request
+
 SCHEMA >
     `date` DateTime `json:$.date`,
     `client_ip` String `json:$.client_ip`,

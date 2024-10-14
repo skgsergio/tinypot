@@ -1,5 +1,7 @@
 DESCRIPTION >
-    Top AS including country code by number of individual IPs that reached the HTTP honeypot. Can by filtered by date.
+    Top country codes by number of individual IPs that reached the HTTP honeypot. Can by filtered by date.
+
+TAGS http, country
 
 TOKEN "pipe_read" READ
 

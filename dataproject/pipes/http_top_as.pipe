@@ -1,6 +1,8 @@
 DESCRIPTION >
     Top AS by number of individual IPs that reached the HTTP honeypot. Can be filtered by date and country code.
 
+TAGS http, as
+
 TOKEN "pipe_read" READ
 
 NODE http_top_as_node

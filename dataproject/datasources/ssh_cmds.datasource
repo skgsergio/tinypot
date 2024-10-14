@@ -1,6 +1,8 @@
 DESCRIPTION >
     For succeeded authentications which commands were attempted to run.
 
+TAGS ssh, cmd
+
 SCHEMA >
     `date` DateTime `json:$.date`,
     `session_id` String `json:$.session_id`,
