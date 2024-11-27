@@ -71,7 +71,7 @@ SQL >
         'tinypot_ssh_30m' AS name,
         'gauge' AS type,
         'SSH hits in last 30m' AS help,
-        map('asn', toString(asn), as_name, 'country', country_code, 'as_name') AS labels,
+        map('asn', toString(asn), 'as_name', as_name, 'country', country_code) AS labels,
         countDistinct(client_ip) AS value
     FROM ssh_logins
     WHERE date >= now() - INTERVAL '30 minutes'
@@ -83,7 +83,7 @@ SQL >
         'tinypot_ssh_15m' AS name,
         'gauge' AS type,
         'SSH hits in last 15m' AS help,
-        map('asn', toString(asn), as_name, 'country', country_code, 'as_name') AS labels,
+        map('asn', toString(asn), 'as_name', as_name, 'country', country_code) AS labels,
         countDistinct(client_ip) AS value
     FROM ssh_logins
     WHERE date >= now() - INTERVAL '15 minutes'
@@ -95,7 +95,7 @@ SQL >
         'tinypot_ssh_10m' AS name,
         'gauge' AS type,
         'SSH hits in last 10m' AS help,
-        map('asn', toString(asn), as_name, 'country', country_code, 'as_name') AS labels,
+        map('asn', toString(asn), 'as_name', as_name, 'country', country_code) AS labels,
         countDistinct(client_ip) AS value
     FROM ssh_logins
     WHERE date >= now() - INTERVAL '10 minutes'
@@ -107,7 +107,7 @@ SQL >
         'tinypot_ssh_5m' AS name,
         'gauge' AS type,
         'SSH hits in last 5m' AS help,
-        map('asn', toString(asn), as_name, 'country', country_code, 'as_name') AS labels,
+        map('asn', toString(asn), 'as_name', as_name, 'country', country_code) AS labels,
         countDistinct(client_ip) AS value
     FROM ssh_logins
     WHERE date >= now() - INTERVAL '5 minutes'
@@ -119,7 +119,7 @@ SQL >
         'tinypot_ssh_1m' AS name,
         'gauge' AS type,
         'SSH hits in last 1m' AS help,
-        map('asn', toString(asn), as_name, 'country', country_code, 'as_name') AS labels,
+        map('asn', toString(asn), 'as_name', as_name, 'country', country_code) AS labels,
         countDistinct(client_ip) AS value
     FROM ssh_logins
     WHERE date >= now() - INTERVAL '1 minutes'
