@@ -1,0 +1,158 @@
+DESCRIPTION >
+    Prometheus export for SSH data
+
+TOKEN "pipe_read" READ
+
+TAGS "ssh, prometheus"
+
+NODE ssh_24h
+SQL >
+    SELECT
+        'tinypot_ssh_24h' AS name,
+        'gauge' AS type,
+        'SSH hits in last 24h' AS help,
+        map('asn', toString(asn), 'as_name', as_name, 'country', country_code) AS labels,
+        countDistinct(client_ip) AS value
+    FROM ssh_logins
+    WHERE date >= now() - INTERVAL '24 hours'
+    GROUP BY asn, as_name, country_code
+
+NODE ssh_12h
+SQL >
+    SELECT
+        'tinypot_ssh_12h' AS name,
+        'gauge' AS type,
+        'SSH hits in last 12h' AS help,
+        map('asn', toString(asn), 'as_name', as_name, 'country', country_code) AS labels,
+        countDistinct(client_ip) AS value
+    FROM ssh_logins
+    WHERE date >= now() - INTERVAL '12 hours'
+    GROUP BY asn, as_name, country_code
+
+NODE ssh_6h
+SQL >
+    SELECT
+        'tinypot_ssh_6h' AS name,
+        'gauge' AS type,
+        'SSH hits in last 6h' AS help,
+        map('asn', toString(asn), 'as_name', as_name, 'country', country_code) AS labels,
+        countDistinct(client_ip) AS value
+    FROM ssh_logins
+    WHERE date >= now() - INTERVAL '6 hours'
+    GROUP BY asn, as_name, country_code
+
+NODE ssh_3h
+SQL >
+    SELECT
+        'tinypot_ssh_3h' AS name,
+        'gauge' AS type,
+        'SSH hits in last 3h' AS help,
+        map('asn', toString(asn), 'as_name', as_name, 'country', country_code) AS labels,
+        countDistinct(client_ip) AS value
+    FROM ssh_logins
+    WHERE date >= now() - INTERVAL '3 hours'
+    GROUP BY asn, as_name, country_code
+
+NODE ssh_1h
+SQL >
+    SELECT
+        'tinypot_ssh_1h' AS name,
+        'gauge' AS type,
+        'SSH hits in last 1h' AS help,
+        map('asn', toString(asn), 'as_name', as_name, 'country', country_code) AS labels,
+        countDistinct(client_ip) AS value
+    FROM ssh_logins
+    WHERE date >= now() - INTERVAL '1 hours'
+    GROUP BY asn, as_name, country_code
+
+NODE ssh_30m
+SQL >
+    SELECT
+        'tinypot_ssh_30m' AS name,
+        'gauge' AS type,
+        'SSH hits in last 30m' AS help,
+        map('asn', toString(asn), as_name, 'country', country_code, 'as_name') AS labels,
+        countDistinct(client_ip) AS value
+    FROM ssh_logins
+    WHERE date >= now() - INTERVAL '30 minutes'
+    GROUP BY asn, as_name, country_code
+
+NODE ssh_15m
+SQL >
+    SELECT
+        'tinypot_ssh_15m' AS name,
+        'gauge' AS type,
+        'SSH hits in last 15m' AS help,
+        map('asn', toString(asn), as_name, 'country', country_code, 'as_name') AS labels,
+        countDistinct(client_ip) AS value
+    FROM ssh_logins
+    WHERE date >= now() - INTERVAL '15 minutes'
+    GROUP BY asn, as_name, country_code
+
+NODE ssh_10m
+SQL >
+    SELECT
+        'tinypot_ssh_10m' AS name,
+        'gauge' AS type,
+        'SSH hits in last 10m' AS help,
+        map('asn', toString(asn), as_name, 'country', country_code, 'as_name') AS labels,
+        countDistinct(client_ip) AS value
+    FROM ssh_logins
+    WHERE date >= now() - INTERVAL '10 minutes'
+    GROUP BY asn, as_name, country_code
+
+NODE ssh_5m
+SQL >
+    SELECT
+        'tinypot_ssh_5m' AS name,
+        'gauge' AS type,
+        'SSH hits in last 5m' AS help,
+        map('asn', toString(asn), as_name, 'country', country_code, 'as_name') AS labels,
+        countDistinct(client_ip) AS value
+    FROM ssh_logins
+    WHERE date >= now() - INTERVAL '5 minutes'
+    GROUP BY asn, as_name, country_code
+
+NODE ssh_1m
+SQL >
+    SELECT
+        'tinypot_ssh_1m' AS name,
+        'gauge' AS type,
+        'SSH hits in last 1m' AS help,
+        map('asn', toString(asn), as_name, 'country', country_code, 'as_name') AS labels,
+        countDistinct(client_ip) AS value
+    FROM ssh_logins
+    WHERE date >= now() - INTERVAL '1 minutes'
+    GROUP BY asn, as_name, country_code
+
+NODE ssh_final
+SQL >
+    SELECT *
+    FROM ssh_24h
+    UNION ALL
+    SELECT *
+    FROM ssh_12h
+    UNION ALL
+    SELECT *
+    FROM ssh_6h
+    UNION ALL
+    SELECT *
+    FROM ssh_3h
+    UNION ALL
+    SELECT *
+    FROM ssh_1h
+    UNION ALL
+    SELECT *
+    FROM ssh_30m
+    UNION ALL
+    SELECT *
+    FROM ssh_15m
+    UNION ALL
+    SELECT *
+    FROM ssh_10m
+    UNION ALL
+    SELECT *
+    FROM ssh_5m
+    UNION ALL
+    SELECT *
+    FROM ssh_1m
