@@ -1,9 +1,9 @@
 DESCRIPTION >
     Top User-Agents from the requests to the HTTP honeypot. Can be filtered by date.
 
-TAGS http, useragent
-
 TOKEN "pipe_read" READ
+
+TAGS "http, useragent"
 
 NODE http_top_useragent_node
 SQL >

@@ -1,9 +1,9 @@
 DESCRIPTION >
     Top IP by number of connections that reached the SSH honeypot. Can be filtered by country code and date.
 
-TAGS ssh, ip
-
 TOKEN "pipe_read" READ
+
+TAGS "ssh, ip"
 
 NODE ssh_top_ip_node
 SQL >

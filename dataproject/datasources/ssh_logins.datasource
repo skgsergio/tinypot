@@ -1,7 +1,7 @@
 DESCRIPTION >
     SSH Login attempts. For succeeded auths check ssh_cmds in order to see commands attempts for the session.
 
-TAGS ssh, login
+TAGS "ssh, login"
 
 SCHEMA >
     `date` DateTime `json:$.date`,

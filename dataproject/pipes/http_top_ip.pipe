@@ -1,9 +1,9 @@
 DESCRIPTION >
     Top IP by number of connections that reached the HTTP honeypot. Can be filtered by country code and date.
 
-TAGS http, ip
-
 TOKEN "pipe_read" READ
+
+TAGS "http, ip"
 
 NODE http_top_ip_node
 SQL >

@@ -1,9 +1,9 @@
 DESCRIPTION >
     Top URLs requested to the HTTP honeypot. Can be filtered by date.
 
-TAGS http, url
-
 TOKEN "pipe_read" READ
+
+TAGS "http, url"
 
 NODE http_top_urls_node
 SQL >

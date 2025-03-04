@@ -10,8 +10,7 @@ SQL >
         countDistinct(client_ip) as ip_count,
         {% if Boolean(as_name_with_number, False) %}
             concatWithSeparator(' - ', concat('AS', asn), as_name) as `as`
-        {% else %}
-            asn, as_name
+        {% else %} asn, as_name
         {% end %}
     FROM ssh_logins
     WHERE
