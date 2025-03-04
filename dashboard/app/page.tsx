@@ -3,6 +3,10 @@
 import { SSHTopAS } from '@/components/SSHTopAS'
 import { SSHTopCountry } from '@/components/SSHTopCountry'
 import { SSHTopIP } from '@/components/SSHTopIP'
+import { SSHTopCMDs } from '@/components/SSHTopCMDs'
+import { SSHTopUsers } from '@/components/SSHTopUsers'
+import { SSHTopPasswords } from '@/components/SSHTopPasswords'
+import { SSHTopCredentials } from '@/components/SSHTopCredentials'
 import { HTTPTopAS } from '@/components/HTTPTopAS'
 import { HTTPTopCountry } from '@/components/HTTPTopCountry'
 import { HTTPTopIP } from '@/components/HTTPTopIP'
@@ -11,7 +15,6 @@ import { HTTPTopUA } from '@/components/HTTPTopUA'
 import { Layout, Row } from '@/components/ui/layout'
 import { useDateParams } from '@/lib/utils'
 import { Suspense } from 'react'
-import { SSHTopCMDs } from '@/components/SSHTopCMDs'
 
 function Home() {
   const [dateParams] = useDateParams()
@@ -23,6 +26,11 @@ function Home() {
         <SSHTopAS {...dateParams} />
         <SSHTopIP {...dateParams} />
         <SSHTopCountry {...dateParams} />
+      </Row>
+      <Row>
+        <SSHTopCredentials {...dateParams} />
+        <SSHTopUsers {...dateParams} />
+        <SSHTopPasswords {...dateParams} />
       </Row>
       <SSHTopCMDs {...dateParams} />
       <h2 className="font-sans text-lg">HTTP Honeypot</h2>
