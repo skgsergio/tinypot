@@ -11,6 +11,7 @@ import { HTTPTopUA } from '@/components/HTTPTopUA'
 import { Layout, Row } from '@/components/ui/layout'
 import { useDateParams } from '@/lib/utils'
 import { Suspense } from 'react'
+import { SSHTopCMDs } from '@/components/SSHTopCMDs'
 
 function Home() {
   const [dateParams] = useDateParams()
@@ -23,6 +24,7 @@ function Home() {
         <SSHTopIP {...dateParams} />
         <SSHTopCountry {...dateParams} />
       </Row>
+      <SSHTopCMDs {...dateParams} />
       <h2 className="font-sans text-lg">HTTP Honeypot</h2>
       <Row>
         <HTTPTopAS {...dateParams} />
