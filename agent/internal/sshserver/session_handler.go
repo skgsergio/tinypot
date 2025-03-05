@@ -66,6 +66,8 @@ func sessionHandler(session ssh.Session) {
 				switch pseudoArgv[0] {
 				case "exit":
 					break TermLoop
+				case "whoami":
+					fmt.Fprintf(t, "%s\n", session.User())
 				case "help":
 					fmt.Fprint(t, "GNU bash, version 5.1.33(7)-release (x86_64-pc-linux-gnu)\n")
 				default:
