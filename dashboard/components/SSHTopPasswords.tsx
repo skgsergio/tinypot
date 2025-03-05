@@ -11,7 +11,7 @@ export function SSHTopPasswords(params: {
 }) {
   return (
     <Table
-      endpoint="https://api.tinybird.co/v0/pipes/ssh_top_credentials.json?what=password"
+      endpoint="https://api.tinybird.co/v0/pipes/ssh_top_credentials.json?page_size=20&what=password"
       token={process.env.NEXT_PUBLIC_DASHBOARD_TOKEN}
       categories={['uses', 'password']}
       borderRadius="8px"
