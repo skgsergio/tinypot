@@ -1,0 +1,20 @@
+{"date": "2025-03-16 18:03:36", "session_id": "sess_de37222c33eaa2e4", "cmd": "top", "interactive": 1}
+{"date": "2025-03-16 15:57:08", "session_id": "sess_0faceede03ae8a10", "cmd": "netstat -an", "interactive": 1}
+{"date": "2025-03-16 20:02:16", "session_id": "sess_cbb760b2618f0975", "cmd": "top", "interactive": 1}
+{"date": "2025-03-16 17:20:41", "session_id": "sess_58471b1a7f38471a", "cmd": "whoami", "interactive": 0}
+{"date": "2025-03-16 19:14:45", "session_id": "sess_9a4b01c21817b86a", "cmd": "id", "interactive": 0}
+{"date": "2025-03-16 20:38:50", "session_id": "sess_8e734eae3f925514", "cmd": "pwd", "interactive": 1}
+{"date": "2025-03-16 16:51:33", "session_id": "sess_b431bda7846572d5", "cmd": "ls -la", "interactive": 0}
+{"date": "2025-03-17 09:35:48", "session_id": "sess_e251a7e6525773fb", "cmd": "netstat -an", "interactive": 1}
+{"date": "2025-03-16 11:15:22", "session_id": "sess_833fadaf575be3df", "cmd": "cat /etc/passwd", "interactive": 1}
+{"date": "2025-03-17 04:24:12", "session_id": "sess_e8b9d00029992b51", "cmd": "cat /etc/passwd", "interactive": 1}
+{"date": "2025-03-17 06:21:00", "session_id": "sess_bd78c191e1e47940", "cmd": "pwd", "interactive": 1}
+{"date": "2025-03-16 16:52:11", "session_id": "sess_6fe246aed3decca6", "cmd": "whoami", "interactive": 0}
+{"date": "2025-03-17 05:40:59", "session_id": "sess_76a943931ddc4581", "cmd": "ps aux", "interactive": 0}
+{"date": "2025-03-16 22:52:55", "session_id": "sess_fa45d98563f47679", "cmd": "id", "interactive": 0}
+{"date": "2025-03-17 08:28:15", "session_id": "sess_5911533a44a8ce3d", "cmd": "id", "interactive": 0}
+{"date": "2025-03-17 05:20:03", "session_id": "sess_6c2300f580d1d373", "cmd": "ls -la", "interactive": 0}
+{"date": "2025-03-16 12:13:16", "session_id": "sess_b76e415980fecc87", "cmd": "top", "interactive": 1}
+{"date": "2025-03-16 14:46:08", "session_id": "sess_c03ef55d02fdad8b", "cmd": "netstat -an", "interactive": 1}
+{"date": "2025-03-17 05:04:27", "session_id": "sess_ceb55a462c859572", "cmd": "df -h", "interactive": 0}
+{"date": "2025-03-16 17:27:43", "session_id": "sess_de5487daac119661", "cmd": "ls -la", "interactive": 0}

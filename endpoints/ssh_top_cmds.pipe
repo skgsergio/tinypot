@@ -1,21 +1,20 @@
 DESCRIPTION >
-    Top country codes by number of individual IPs that reached the HTTP honeypot.
-    Can by filtered by date.
+    Top commands ran in the SSH honeypot. Can be filtered by date.
 
 TOKEN "pipe_read" READ
 
-TAGS "http, country"
-
-NODE http_top_country_node
+NODE ssh_top_cmds_node
 SQL >
     %
-    SELECT countDistinct(client_ip) as ip_count, country_code
-    FROM http_requests
+    SELECT count(cmd) as executions, cmd
+    FROM ssh_cmds
     WHERE
         1 == 1
         {% if defined(date_from) %} AND Date(date) >= {{ Date(date_from) }}{% end %}
         {% if defined(date_to) %} AND Date(date) <= {{ Date(date_to) }}{% end %}
-    GROUP BY country_code
-    ORDER BY ip_count DESC
+    GROUP BY cmd
+    ORDER BY executions DESC
     LIMIT {{ Int32(page_size, 10) }}
     OFFSET {{ Int32(page, 0) * Int32(page_size, 10) }}
+
+TYPE endpoint

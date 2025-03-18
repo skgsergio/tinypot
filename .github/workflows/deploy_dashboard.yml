@@ -53,7 +53,8 @@ jobs:
 
       - name: Build Next.js
         env:
-          NEXT_PUBLIC_DASHBOARD_TOKEN: ${{ secrets.NEXT_PUBLIC_DASHBOARD_TOKEN }}
+          NEXT_PUBLIC_TINYBIRD_HOST: ${{ secrets.NEXT_PUBLIC_TINYBIRD_HOST }}
+          NEXT_PUBLIC_PIPE_READ_TOKEN: ${{ secrets.NEXT_PUBLIC_PIPE_READ_TOKEN }}
         run: pnpm next build
 
       - name: Upload artifact

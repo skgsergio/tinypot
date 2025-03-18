@@ -1,20 +1,23 @@
 DESCRIPTION >
-    Top country codes by number of individual IPs that reached the SSH honeypot. Can by filtered by date.
+    Top User-Agents from the requests to the HTTP honeypot. Can be filtered by date.
 
 TOKEN "pipe_read" READ
 
-TAGS "ssh, country"
+TAGS "http, useragent"
 
-NODE ssh_top_country_node
+NODE http_top_useragent_node
 SQL >
     %
-    SELECT countDistinct(client_ip) as ip_count, country_code
-    FROM ssh_logins
+    SELECT count() AS hits, user_agent
+    FROM http_requests
     WHERE
         1 == 1
+        {% if Boolean(exclude_empty) %} AND user_agent != ''{% end %}
         {% if defined(date_from) %} AND Date(date) >= {{ Date(date_from) }}{% end %}
         {% if defined(date_to) %} AND Date(date) <= {{ Date(date_to) }}{% end %}
-    GROUP BY country_code
-    ORDER BY ip_count DESC
+    GROUP BY user_agent
+    ORDER BY hits DESC
     LIMIT {{ Int32(page_size, 10) }}
     OFFSET {{ Int32(page, 0) * Int32(page_size, 10) }}
+
+TYPE endpoint
