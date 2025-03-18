@@ -18,17 +18,19 @@ const (
 )
 
 type TinyBird struct {
+	host   string
 	apiKey string
 }
 
-func New(apiKey string) *TinyBird {
+func New(host string, apiKey string) *TinyBird {
 	return &TinyBird{
+		host:   host,
 		apiKey: apiKey,
 	}
 }
 
 func (tb *TinyBird) postEvents(dataSource string, payload []byte) bool {
-	url := fmt.Sprintf("https://api.tinybird.co/v0/events?name=%s", dataSource)
+	url := fmt.Sprintf("https://%s/v0/events?name=%s", tb.host, dataSource)
 
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(payload))
 	if err != nil {

@@ -28,6 +28,11 @@ var (
 		StrFromEnv("TP_HTTP_LISTEN", ":8080"),
 		"HTTP listen address (env var \"TP_HTTP_LISTEN\")",
 	)
+	tbHostFlag = flag.String(
+		"tb-host",
+		StrFromEnv("TP_TB_HOST", "api.tinybird.co"),
+		"Tinybird region API host (env var \"TP_TB_HOST\")",
+	)
 	tbApiKeyFlag = flag.String(
 		"tb-apikey",
 		StrFromEnv("TP_TB_APIKEY", ""),
@@ -93,7 +98,7 @@ func main() {
 	}
 
 	geo := geoip.New(*geoipCityFlag, *geoipASNFlag)
-	tb := tinybird.New(*tbApiKeyFlag)
+	tb := tinybird.New(*tbHostFlag, *tbApiKeyFlag)
 
 	wg := sync.WaitGroup{}
 
