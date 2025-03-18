@@ -6,12 +6,16 @@ TOKEN "pipe_read" READ
 NODE ssh_top_cmds_node
 SQL >
     %
-    SELECT count(cmd) as executions, cmd
-    FROM ssh_cmds
+    SELECT 
+        count(cmd) as executions,
+        countDistinct(l.client_ip) as unique_ips,
+        cmd
+    FROM ssh_cmds c
+    LEFT JOIN ssh_logins l ON c.session_id = l.session_id
     WHERE
         1 == 1
-        {% if defined(date_from) %} AND Date(date) >= {{ Date(date_from) }}{% end %}
-        {% if defined(date_to) %} AND Date(date) <= {{ Date(date_to) }}{% end %}
+        {% if defined(date_from) %} AND Date(c.date) >= {{ Date(date_from) }}{% end %}
+        {% if defined(date_to) %} AND Date(c.date) <= {{ Date(date_to) }}{% end %}
     GROUP BY cmd
     ORDER BY executions DESC
     LIMIT {{ Int32(page_size, 10) }}
