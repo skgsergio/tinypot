@@ -1,0 +1,10 @@
+/* Fix ghost column in tables */
+.chart-row table thead tr th:first-child,
+.chart-row table tbody tr td:first-child {
+    width: 100px;
+}
+
+.chart-row table thead tr th:last-child,
+.chart-row table tbody tr td:last-child {
+    display: none;
+}

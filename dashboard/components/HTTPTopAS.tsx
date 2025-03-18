@@ -11,8 +11,8 @@ export function HTTPTopAS(params: {
 }) {
   return (
     <BarList
-      endpoint="https://api.tinybird.co/v0/pipes/http_top_as.json?as_name_with_number=true"
-      token={process.env.NEXT_PUBLIC_DASHBOARD_TOKEN}
+      endpoint={`https://${process.env.NEXT_PUBLIC_TINYBIRD_HOST}/v0/pipes/http_top_as.json?as_name_with_number=true`}
+      token={process.env.NEXT_PUBLIC_TINYBIRD_PIPE_READ_TOKEN}
       index="as"
       categories={['ip_count']}
       colorPalette={['#27F795', '#008060', '#0EB1B9']}

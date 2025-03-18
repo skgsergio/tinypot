@@ -12,7 +12,7 @@ import { HTTPTopCountry } from '@/components/HTTPTopCountry'
 import { HTTPTopIP } from '@/components/HTTPTopIP'
 import { HTTPTopURL } from '@/components/HTTPTopURL'
 import { HTTPTopUA } from '@/components/HTTPTopUA'
-import { Layout, Row } from '@/components/ui/layout'
+import { Layout, ChartRow } from '@/components/ui/layout'
 import { useDateParams } from '@/lib/utils'
 import { Suspense } from 'react'
 
@@ -22,25 +22,29 @@ function Home() {
   return (
     <Layout>
       <h2 className="font-sans text-lg">SSH Honeypot</h2>
-      <Row>
+      <ChartRow>
         <SSHTopAS {...dateParams} />
         <SSHTopIP {...dateParams} />
         <SSHTopCountry {...dateParams} />
-      </Row>
-      <Row>
+      </ChartRow>
+      <ChartRow>
         <SSHTopCredentials {...dateParams} />
         <SSHTopUsers {...dateParams} />
         <SSHTopPasswords {...dateParams} />
-      </Row>
-      <SSHTopCMDs {...dateParams} />
+      </ChartRow>
+      <ChartRow>
+        <SSHTopCMDs {...dateParams} />
+      </ChartRow>
       <h2 className="font-sans text-lg">HTTP Honeypot</h2>
-      <Row>
+      <ChartRow>
         <HTTPTopAS {...dateParams} />
         <HTTPTopIP {...dateParams} />
         <HTTPTopCountry {...dateParams} />
-      </Row>
-      <HTTPTopURL {...dateParams} />
-      <HTTPTopUA {...dateParams} />
+      </ChartRow>
+      <ChartRow>
+        <HTTPTopURL {...dateParams} />
+        <HTTPTopUA {...dateParams} />
+      </ChartRow>
     </Layout>
   )
 }

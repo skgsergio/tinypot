@@ -10,8 +10,8 @@ export function SSHTopCountry(params: {
 }) {
   return (
     <PieChart
-      endpoint="https://api.tinybird.co/v0/pipes/ssh_top_country.json"
-      token={process.env.NEXT_PUBLIC_DASHBOARD_TOKEN}
+      endpoint={`https://${process.env.NEXT_PUBLIC_TINYBIRD_HOST}/v0/pipes/ssh_top_country.json`}
+      token={process.env.NEXT_PUBLIC_TINYBIRD_PIPE_READ_TOKEN}
       index="country_code"
       categories={['ip_count']}
       colorPalette={['#27F795', '#008060', '#0EB1B9', '#9263AF', '#5A6FC0', '#86BFDB', '#FFC145', '#FF6B6C', '#DC82C8', '#FFC0F1']}

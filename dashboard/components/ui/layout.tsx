@@ -3,6 +3,7 @@ import * as React from 'react'
 import { GitHubLogoIcon } from '@radix-ui/react-icons'
 import { useDateParams } from '@/lib/utils'
 import { DateRangePicker } from './DateRangePicker'
+import './ChartTablesFix.css'
 
 export function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
   const [dateParams, setDateParams] = useDateParams()
@@ -20,6 +21,6 @@ export function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
   )
 }
 
-export function Row({ children }: Readonly<{ children?: React.ReactNode }>) {
-  return <div className="flex flex-col lg:flex-row gap-4 w-full">{children}</div>
+export function ChartRow({ children }: Readonly<{ children?: React.ReactNode }>) {
+  return <div className="chart-row flex flex-col lg:flex-row gap-4 w-full">{children}</div>
 }
