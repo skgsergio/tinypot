@@ -1,10 +1,11 @@
-/* Fix ghost column in tables */
-.chart-row table thead tr th:first-child,
-.chart-row table tbody tr td:first-child {
-    width: 100px;
-}
-
+/* Remove ghost column */
 .chart-row table thead tr th:last-child,
 .chart-row table tbody tr td:last-child {
     display: none;
+}
+
+/* Force last column to be as wide as possible */
+.chart-row table thead tr th:nth-last-child(2),
+.chart-row table tbody tr td:nth-last-child(2) {
+    width: 100%;
 }
